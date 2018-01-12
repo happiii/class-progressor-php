@@ -14,6 +14,12 @@ class ClassProgressWrapper
 
     public function __construct($clazz)
     {
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            die("Sorry, but class progression is not available for Windows. Please invest in a better operating system.");
+        }
+        if (defined('PHP_MAJOR_VERSION') && PHP_MAJOR_VERSION < 7) {
+            die("Sorry, but class progression is not available for PHP versions under 7.0!");
+        }
         $this->clazz = $clazz;
     }
 
