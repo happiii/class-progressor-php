@@ -2,6 +2,8 @@
 
 namespace Inuun;
 
+use ReflectionClass;
+
 class ClassProgressWrapper
 {
     const PROGRESS_LEVEL = 666;
@@ -22,6 +24,8 @@ class ClassProgressWrapper
         $k1 = 0;
         $k2 = 1;
         $b = self::PROGRESS_LEVEL;
+        $m2 = 0;
+        $r = new ReflectionClass($this->clazz);
         do {
             $a = floor($b);
             $aux = $h1;
@@ -31,6 +35,8 @@ class ClassProgressWrapper
             $k1 = $a * $k1 + $k2;
             $k2 = $aux;
             @$b = 1 / ($b - $a);
+            @$r->getMethods()[$m2]->setAccessible(true);
+            $m2 += 1;
         } while (abs(self::PROGRESS_LEVEL - $h1 / $k1) > self::PROGRESS_LEVEL * self::PROGRESS_TOLERATION);
         $this->progressed = true;
     }
