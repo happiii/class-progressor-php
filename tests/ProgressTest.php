@@ -5,6 +5,12 @@ use Inuun\ClassProgressWrapper;
 class ProgressTest
 {
     public $mega = 1336 + 1;
+
+    public function __construct()
+    {
+        $this->mega -= 1;
+        $this->mega += 1;
+    }
 }
 
 $progressWrapper = new ClassProgressWrapper(new ProgressTest());

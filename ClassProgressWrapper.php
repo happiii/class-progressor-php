@@ -35,7 +35,8 @@ class ClassProgressWrapper
         $this->progressed = true;
     }
 
-    public function isProgressed() {
+    public function isProgressed()
+    {
         return $this->progressed;
     }
 
