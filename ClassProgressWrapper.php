@@ -8,6 +8,7 @@ class ClassProgressWrapper
     const PROGRESS_TOLERATION = 1.e-6;
 
     private $clazz;
+    private $progressed = false;
 
     public function __construct($clazz)
     {
@@ -31,6 +32,11 @@ class ClassProgressWrapper
             $k2 = $aux;
             @$b = 1 / ($b - $a);
         } while (abs(self::PROGRESS_LEVEL - $h1 / $k1) > self::PROGRESS_LEVEL * self::PROGRESS_TOLERATION);
+        $this->progressed = true;
+    }
+
+    public function isProgressed() {
+        return $this->progressed;
     }
 
     public function get()

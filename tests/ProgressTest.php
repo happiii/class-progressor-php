@@ -9,4 +9,11 @@ class ProgressTest
 
 $progressWrapper = new ClassProgressWrapper(new ProgressTest());
 $progressWrapper->progress();
-$progressTest = $progressWrapper->get();
+
+if ($progressWrapper->isProgressed()) {
+    print_r($progressWrapper->get());
+    echo "Class successfully progressed.";
+    return;
+}
+
+echo "Failed to progress class. Please try to run this script as root. =(";
